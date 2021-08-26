@@ -58,20 +58,19 @@ export const MainSection = () => {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Link href="/authentication/register">
-              <Button
-                colorScheme={"green"}
-                bg={BRAND_COLOR_RED}
-                rounded={"full"}
-                px={6}
-                _hover={{
-                  bg: "#e34d4d",
-                }}
-                color="whitesmoke"
-              >
-                Get Started
-              </Button>
-            </Link>
+            <Button
+              colorScheme={"green"}
+              bg={BRAND_COLOR_RED}
+              rounded={"full"}
+              px={6}
+              _hover={{
+                bg: "#e34d4d",
+              }}
+              color="whitesmoke"
+              onClick={() => NextRouter.push("/authentication/register")}
+            >
+              Get Started
+            </Button>
             <Text
               _hover={{
                 textDecoration: "underline",

@@ -52,15 +52,6 @@ const Forgetpassword = () => {
             boxShadow={"lg"}
             p={8}
           >
-            <NextLink href="/">
-              <Image
-                src={logoSrc}
-                loading="eager"
-                width="70px"
-                height="auto"
-                alt="Brand Secondary Logo"
-              />
-            </NextLink>
             <Stack mb="20px">
               <Heading fontSize={"3xl"}>Forgot Your Password?</Heading>
             </Stack>

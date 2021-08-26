@@ -54,18 +54,16 @@ export const NavBar = () => {
           justifyContent={{ base: "center", md: "start" }}
           alignItems="center"
         >
-          <Link href="/" _focus={{}}>
-            <Image
-              width="70px"
-              height="auto"
-              alt="Brand Secondary Logo"
-              src={useColorModeValue(
-                "/Kpass-primary.png",
-                "/Kpass-secondary.png"
-              )}
-              loading="eager"
-            />
-          </Link>
+          <Image
+            width="70px"
+            height="auto"
+            alt="Brand Secondary Logo"
+            src={useColorModeValue(
+              "/Kpass-primary.png",
+              "/Kpass-secondary.png"
+            )}
+            loading="eager"
+          />
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />

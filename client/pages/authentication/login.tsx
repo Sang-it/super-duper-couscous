@@ -18,8 +18,6 @@ import { useLoginUserMutation, useMeQuery } from "../../generated/graphql";
 import { URQLClient } from "../../utils/createClient";
 import NextRouter from "next/router";
 import { LoadingPage } from "../../components/LoadingPage";
-import { useColorModeValue } from "@chakra-ui/react";
-import { BRAND_COLOR_RED, HOVER_BRAND_COLOR_RED } from "../../constants";
 
 type FormValues = {
   email: string;
@@ -63,25 +61,11 @@ const Login = () => {
     actions.setSubmitting(false);
   };
 
-  const logoSrc = useColorModeValue(
-    "/Kpass-primary.png",
-    "/Kpass-secondary.png"
-  );
-
   if (!MeFetching && !MeData?.me) {
     return (
       <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
         <Flex p={8} flex={1} align={"center"} justify={"center"}>
           <Stack spacing={4} w={"full"} maxW={"md"}>
-            <Link href="/" _focus={{}}>
-              <Image
-                src={logoSrc}
-                loading="eager"
-                width="70px"
-                height="auto"
-                alt="Brand Secondary Logo"
-              />
-            </Link>
             <Heading fontSize={"2xl"}>Sign in to your account</Heading>
             <Formik
               initialValues={{ email: "", password: "" }}
@@ -123,14 +107,13 @@ const Login = () => {
                       align={"start"}
                       justify={"space-between"}
                     >
-                      <Checkbox colorScheme="red">Remember me</Checkbox>
-                      <Link href="/forgetpassword">Forgot password?</Link>
+                      <Checkbox>Remember me</Checkbox>
+                      <Link color={"blue.500"} href="/forgetpassword">
+                        Forgot password?
+                      </Link>
                     </Stack>
                     <Button
-                      background={BRAND_COLOR_RED}
-                      _hover={{
-                        background: HOVER_BRAND_COLOR_RED,
-                      }}
+                      colorScheme={"blue"}
                       variant={"solid"}
                       type="submit"
                       isLoading={isSubmitting}
@@ -140,20 +123,15 @@ const Login = () => {
                     <Text align="center" userSelect="none" fontWeight="bold">
                       OR
                     </Text>
-                    <Link
-                      href="/authentication/register"
-                      _hover={{
-                        textDecoration: "none",
-                      }}
+                    <Button
+                      colorScheme={"blue"}
+                      variant={"solid"}
+                      onClick={() =>
+                        NextRouter.push("/authentication/register")
+                      }
                     >
-                      <Button
-                        colorScheme={"facebook"}
-                        variant={"outline"}
-                        width="100%"
-                      >
-                        Need An Account?
-                      </Button>
-                    </Link>
+                      Need An Account?
+                    </Button>
                   </Stack>
                 </Form>
               )}
@@ -164,11 +142,10 @@ const Login = () => {
           <Image
             alt={"Login Image"}
             objectFit={"cover"}
-            height="100vh"
             draggable="false"
-            src={"/login-bg.jpeg"}
-            loading="eager"
-            display={{ base: "none", md: "block" }}
+            src={
+              "https://images.unsplash.com/photo-1626643590239-4d5051bafbcc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+            }
           />
         </Flex>
       </Stack>
