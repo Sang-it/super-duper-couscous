@@ -12,9 +12,11 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import NextRouter from "next/router";
+import { BRAND_COLOR_RED } from "../../constants";
 
 export const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -22,13 +24,14 @@ export const NavBar = () => {
   return (
     <Box position="sticky" top="0" zIndex="1">
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("white", "black")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={"solid"}
+        zIndex="100"
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
@@ -46,14 +49,23 @@ export const NavBar = () => {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-            CanvaLogo
-          </Text>
+        <Flex
+          flex={{ base: 1 }}
+          justifyContent={{ base: "center", md: "start" }}
+          alignItems="center"
+        >
+          <Link href="/" _focus={{}}>
+            <Image
+              width="70px"
+              height="auto"
+              alt="Brand Secondary Logo"
+              src={useColorModeValue(
+                "/Kpass-primary.png",
+                "/Kpass-secondary.png"
+              )}
+              loading="eager"
+            />
+          </Link>
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
@@ -82,9 +94,9 @@ export const NavBar = () => {
             fontSize={"sm"}
             fontWeight={600}
             color={"white"}
-            bg={" #46BCBA"}
+            bg={BRAND_COLOR_RED}
             _hover={{
-              bg: "#57C7C4",
+              bg: "#e34d4d",
             }}
             onClick={() => NextRouter.push("/authentication/register")}
           >
@@ -134,7 +146,7 @@ const DesktopNav = () => {
 const MobileNav = () => {
   return (
     <Stack
-      bg={useColorModeValue("white", "gray.800")}
+      // bg={useColorModeValue("white", "gray.800")}
       p={4}
       display={{ md: "none" }}
     >
@@ -176,16 +188,16 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "PlaceHolder",
+    label: "About Us",
     href: "#",
   },
   {
-    label: "Jason Holder",
+    label: "How It Works",
     href: "#",
   },
   {
-    label: "Chakra for the win",
-    href: "#",
+    label: "Password Generator",
+    href: "/password-generator",
   },
   {
     label: "Blog",

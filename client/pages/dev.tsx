@@ -1,7 +1,5 @@
 import { withUrqlClient } from "next-urql";
 import { URQLClient } from "../utils/createClient";
-import { useVerifyMasterPinMutation } from "../generated/graphql";
-import { useEffect } from "react";
 
 const Dev = () => {
   const [, verifyMasterPIN] = useVerifyMasterPinMutation();

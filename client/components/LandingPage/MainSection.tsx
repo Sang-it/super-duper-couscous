@@ -4,14 +4,16 @@ import {
   Heading,
   Container,
   Text,
+  Link,
   Button,
   Stack,
   Icon,
   useColorModeValue,
   createIcon,
 } from "@chakra-ui/react";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import NextRouter from "next/router";
+import { BRAND_COLOR_RED } from "../../constants";
 
 export const MainSection = () => {
   return (
@@ -39,7 +41,7 @@ export const MainSection = () => {
           >
             Secure your
             <br />
-            <Text as={"span"} color={"green.400"}>
+            <Text as={"span"} color={BRAND_COLOR_RED}>
               digital footprint
             </Text>
           </Heading>
@@ -56,28 +58,26 @@ export const MainSection = () => {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Button
-              colorScheme={"green"}
-              bg={"green.400"}
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "green.500",
-              }}
-              onClick={() => NextRouter.push("/authentication/register")}
-            >
-              Get Started
-            </Button>
+            <Link href="/authentication/register">
+              <Button
+                colorScheme={"green"}
+                bg={BRAND_COLOR_RED}
+                rounded={"full"}
+                px={6}
+                _hover={{
+                  bg: "#e34d4d",
+                }}
+                color="whitesmoke"
+              >
+                Get Started
+              </Button>
+            </Link>
             <Text
               _hover={{
                 textDecoration: "underline",
                 cursor: "pointer",
               }}
-            >
-              <Link smooth={true} to="featureList">
-                Learn more
-              </Link>
-            </Text>
+            ></Text>
             <Box>
               <Icon
                 as={Arrow}

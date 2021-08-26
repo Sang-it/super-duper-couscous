@@ -5,6 +5,7 @@ import {
   Flex,
   Text,
   CloseButton,
+  Image,
 } from "@chakra-ui/react";
 import { FiHome, FiSettings } from "react-icons/fi";
 import { NavItem } from "./NavItem";
@@ -29,7 +30,7 @@ export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue("white", "gray.900")}
+      // bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
       w={{ base: "full", md: 60 }}
@@ -38,9 +39,14 @@ export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+        <Image
+          src={useColorModeValue("/Kpass-primary.png", "/Kpass-secondary.png")}
+          loading="eager"
+          width={{ base: "75px", lg: "40%" }}
+          height="auto"
+          alt=""
+        />
+
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
